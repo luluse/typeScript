@@ -32,3 +32,24 @@ const user2: UserInterface = {
     return "Hello" + name;
   }
 };
+
+
+// Union | 
+// type and interfaces are always written with capital letters
+
+type ID = string;
+type PopularTag = string;
+
+interface friendInterface {
+  id: ID,
+  name: string,
+  surname: string,
+}
+
+const popularTags: PopularTag[] = ['coffee', 'croissant']
+
+let pageName: string | number = "1";
+
+let errorMessage: string | null = null;
+
+let friend:friendInterface | null = null;
