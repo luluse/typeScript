@@ -74,4 +74,17 @@ let s: string = vUnknown as string;
 let pName: string = "1";
 let numericPageNumber: number = (pName as unknown) as number;
 
+
 // working with DOM
+
+const someElement = document.querySelector(".foo") as HTMLInputElement;
+
+console.log('someElement', someElement.value)
+
+
+const moreElement = document.querySelector(".foo");
+
+moreElement.addEventListener('blur', (event) => {
+  const target = event.target as HTMLInputElement;
+  console.log('event', target.value)
+})
