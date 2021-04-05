@@ -39,6 +39,7 @@ const user2: UserInterface = {
 
 type ID = string;
 type PopularTag = string;
+type MaybePopularTag = PopularTag | null
 
 interface friendInterface {
   id: ID,
@@ -48,8 +49,29 @@ interface friendInterface {
 
 const popularTags: PopularTag[] = ['coffee', 'croissant']
 
+const dragonTag: MaybePopularTag = "dragon";
+
 let pageName: string | number = "1";
 
 let errorMessage: string | null = null;
 
 let friend:friendInterface | null = null;
+
+
+// void
+// when we don't return anything, it's void.
+
+const doSomething = (): void =>{
+  console.log("doSomething");
+}
+
+// other types : any, never, unknown
+// "as" operator to make type assertion
+
+let vUnknown: unknown = 10;
+let s: string = vUnknown as string;
+
+let pName: string = "1";
+let numericPageNumber: number = (pName as unknown) as number;
+
+// working with DOM
