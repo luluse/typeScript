@@ -76,7 +76,6 @@ let numericPageNumber: number = (pName as unknown) as number;
 
 
 // working with DOM
-
 const someElement = document.querySelector(".foo") as HTMLInputElement;
 
 console.log('someElement', someElement.value)
@@ -88,3 +87,48 @@ moreElement.addEventListener('blur', (event) => {
   const target = event.target as HTMLInputElement;
   console.log('event', target.value)
 })
+
+
+// classes
+
+interface ClientInterface {
+  getFullName(): string;
+}
+
+ class Client implements ClientInterface {
+  firstName: string;
+  lastName: string;
+  readonly unchangeableName: string;
+  static readonly maxAge = 50;
+
+  constructor(firstName: string, lastName: string ){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.unchangeableName = firstName;
+  }
+
+  changeUnchangeableName(): void {
+    // this.unchangeableName = "foo";
+  }
+
+  getFullName(): string {
+    return this.firstName + ' ' + this.lastName
+  }
+ }
+
+ class Admin extends Client {
+  private editor: string
+
+  setEditor(editor:string): void {
+    this.editor = editor
+  }
+
+  getEditor(): string {
+    return this.editor
+  }
+ }
+
+ const client = new Client('Lulu', 'Fe')
+ console.log(client)
+
+ const admin = new Admin('Jordi', 'Skee')
