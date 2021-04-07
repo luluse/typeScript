@@ -132,3 +132,41 @@ interface ClientInterface {
  console.log(client)
 
  const admin = new Admin('Jordi', 'Skee')
+
+
+// interfaces and functions
+// all generic data type are writtin inside <>
+// generic \s allow us to provide different data types
+
+//const updateArray = append<string>('baz', ['foo', 'fizz']);
+
+const addId = <T extends object>(obj: T) => {
+  const id = Math.random().toString(16);
+  return {
+    ... obj,
+    id
+  };
+};
+
+interface UtilisateurInterface<T, V> {
+  name: string,
+  data: T,
+  meta: V,
+}
+
+const utilisateur: UtilisateurInterface<{meta: string}, string> = {
+  name: 'James',
+  data: {
+    meta: "foo",
+  },
+  meta: 'Fizz'
+}
+
+const utilisateur2: UtilisateurInterface<string[], []> = {
+  name: 'Bear',
+  data: ['foo', 'buzz'],
+  meta: []
+}
+
+const result = addId<UtilisateurInterface>(utilisateur);
+console.log('result', result);
