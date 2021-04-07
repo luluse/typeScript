@@ -168,5 +168,39 @@ const utilisateur2: UtilisateurInterface<string[], []> = {
   meta: []
 }
 
-const result = addId<UtilisateurInterface>(utilisateur);
-console.log('result', result);
+// const result = addId<UtilisateurInterface>(utilisateur);
+// console.log('result', result);
+
+
+
+// Enumerables
+// enum is a reserved word to create enumerables
+
+// old way
+const statuses = {
+  notStarted: 0,
+  inProgress: 1,
+  done: 2,
+}
+
+console.log(statuses.inProgress);
+
+// new way
+// values increment from zero
+enum StatusEnum{
+  NotStarted = 'notStarted',
+  InProgress = 'inProgress',
+  Done = 'done',
+}
+
+interface Task {
+  id: string;
+  status: StatusEnum;
+}
+
+// can be used as value and data type
+let notStartedStatus: StatusEnum = StatusEnum.NotStarted;
+
+notStartedStatus = StatusEnum.Done;
+
+console.log(StatusEnum.InProgress);
